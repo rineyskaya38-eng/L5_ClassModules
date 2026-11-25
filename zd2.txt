@@ -1,0 +1,35 @@
+import Department from './Department.js';
+
+export default class ITDepartment extends Department {
+  #techStack;
+
+  constructor(name, employeeCount, isActive, techStack) {
+    super(name, employeeCount, isActive);
+    this.#techStack = techStack;
+  }
+
+  get techStack() { return this.#techStack; }
+  set techStack(value) { this.#techStack = value; }
+
+  show() {
+    console.log(`IT-отдел: ${this.name}, Сотрудников: ${this.employeeCount}, Активен: ${this.isActive}, Стек: ${this.#techStack}`);
+  }
+
+  delete() {
+    super.delete();
+    this.#techStack = undefined;
+  }
+
+  copy() {
+    return this;
+  }
+
+  static clone(itDepartment) {
+    return new ITDepartment(
+      itDepartment.name, 
+      itDepartment.employeeCount, 
+      itDepartment.isActive, 
+      itDepartment.techStack
+    );
+  }
+}

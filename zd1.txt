@@ -1,0 +1,47 @@
+export default class Department {
+  #name;
+  #employeeCount;
+  #isActive;
+
+  constructor(name, employeeCount, isActive) {
+    this.#name = name;
+    this.#employeeCount = employeeCount;
+    this.#isActive = isActive;
+  }
+
+  get name() { return this.#name; }
+  set name(value) { this.#name = value; }
+
+  get employeeCount() { return this.#employeeCount; }
+  set employeeCount(value) { this.#employeeCount = value; }
+
+  get isActive() { return this.#isActive; }
+  set isActive(value) { this.#isActive = value; }
+
+  show() {
+    console.log(`Отдел: ${this.#name}, Сотрудников: ${this.#employeeCount}, Активен: ${this.#isActive}`);
+  }
+
+  delete() {
+    this.#name = undefined;
+    this.#employeeCount = undefined;
+    this.#isActive = undefined;
+    Object.freeze(this);
+  }
+
+  copy() {
+    return this;
+  }
+
+  #reorganize() {
+    this.#isActive = false;
+  }
+
+  triggerReorganization() {
+    this.#reorganize();
+  }
+
+  static clone(department) {
+    return new Department(department.name, department.employeeCount, department.isActive);
+  }
+}

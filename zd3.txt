@@ -1,0 +1,8 @@
+import ITDepartment from './ITDepartment.js';
+
+const dept1 = new ITDepartment("Разработка", 15, true, "JavaScript, React, Node.js");
+const dept2 = new ITDepartment("Инфраструктура", 5, false, "Python, Docker, Kubernetes");
+
+const departments = [dept1, dept2];
+
+departments.forEach(dept => dept.show());
